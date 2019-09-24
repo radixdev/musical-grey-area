@@ -1,0 +1,27 @@
+{
+  "name": "musical-grey-area",
+  "version": "1.0.0",
+  "description": "Ethically questionable lottery rigging. This time it's not an app!",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radixdev/musical-grey-area.git"
+  },
+  "author": "radixdev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radixdev/musical-grey-area/issues"
+  },
+  "homepage": "https://github.com/radixdev/musical-grey-area#readme",
+  "dependencies": {
+    "puppeteer": "^1.17.0",
+    "puppeteer-extra": "^2.1.3",
+    "puppeteer-extra-plugin-stealth": "^2.2.2"
+  },
+  "engines": {
+    "node": "8"
+  }
+}
