@@ -13,18 +13,17 @@ puppeteer.use(recaptchaPlugin)
 
 const pageUtil = require('./page_util.js');
 
-exports.runLoginTest = function () {
+exports.runScript = function () {
   try {
     (async () => {
       const browser = await puppeteer.launch({
         headless: false,
         slowMo: 5,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
       })
       const page = await browser.newPage()
 
-      await page.setViewport({ width: 1280, height: 800 })
+      await page.setViewport({ width: 1280, height: 800})
       await page.setExtraHTTPHeaders({
         'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8'
       });
@@ -40,7 +39,11 @@ exports.runLoginTest = function () {
 
       // goto the provided list
       // await page.goto('https://lottery.broadwaydirect.com/show/hamilton/')
-      await page.goto('https://lottery.broadwaydirect.com/enter-lottery/?lottery=399326&window=popup')
+
+      // Should look like https://lottery.broadwaydirect.com/enter-lottery/?lottery=399326&window=popup
+      url = process.argv[2]
+      console.log(`Visiting lottery link at ${url}`)
+      await page.goto(url)
 
       await page.waitFor(1000);
 
@@ -69,4 +72,9 @@ exports.runLoginTest = function () {
   }
 }
 
-exports.runLoginTest()
+for (let j = 0; j < process.argv.length; j++) {
+  console.log(j + ' -> ' + (process.argv[j]));
+}
+
+exports.runScript()
+
